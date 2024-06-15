@@ -1,0 +1,255 @@
+=========================================================================================
+Documentation for deploying to the Appache tomcat and  how to connect to the Andriod TV 
+=========================================================================================
+
+
+=====================
+creating war file :
+======================
+
+cd "C:\Program Files\Java\jdk-22\bin"
+jar -cvf C:\Sujithra\DOC_DIR1\DOC_DIR1.war -C C:\Sujithra\DOC_DIR1 .
+====================================================================================
+
+cd C:\Program Files\Apache Software Foundation\Tomcat 10.1\bin
+C:\Program Files\Apache Software Foundation\Tomcat 10.1\bin>startup.bat
+if u want to stop this server enter the command ==>shutdown.bat
+
+
+
+
+enter the url on browser 
+===============================
+http://localhost:8080/DOC_DIR/
+
+http://192.168.36.26:8080/DOC_DIR/
+===============================
+
+---------------------------------------------
+important note : 
+changes u need to do in server.xml
+ <Connector port="8080" address="192.168.36.26" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443"
+               maxParameterCount="1000"
+               />
+------------------------------------------
+
+
+
+
+Example Batch Script for Windows
+You can create a batch script to automate the creation of the WAR file:
+
+batch
+Copy code
+@echo off
+
+REM Navigate to the directory containing the batch file
+cd /d %~dp0
+
+REM Change to the project directory
+cd "path\to\my-web-app"
+
+REM Delete existing WAR file if it exists
+if exist my-web-app.war del my-web-app.war
+
+REM Create new WAR file from project contents
+jar -cvf my-web-app.war *
+
+REM Move the WAR file to the deployment directory (optional)
+move my-web-app.war "path\to\tomcat\webapps"
+================================================================================
+
+
+
+
+
+Using Fully Kiosk Browser
+Fully Kiosk Browser is a popular app for Android devices that can load a specific URL in full screen and hide the URL bar, effectively putting your TV in kiosk mode.
+
+Steps to Configure Fully Kiosk Browser:
+Install Fully Kiosk Browser:
+
+Open the Google Play Store on your Android TV.
+Search for Fully Kiosk Browser & App Lockdown.
+Install the application.
+Configure Fully Kiosk Browser:
+
+Open Fully Kiosk Browser on your Android TV.
+You will be prompted to enter the Start URL. Enter the URL of your web application, e.g., http://your-apache-server/index.html.
+Go to Settings within Fully Kiosk Browser.
+Configure the following settings:
+Web Content Settings:
+Enable Hide URL Bar.
+Enable Hide Navigation Bar.
+Kiosk Mode Settings:
+Enable Keep Screen On.
+Enable Autostart Fully on Boot.
+Enable Prevent App Switch to ensure the app remains in the foreground.
+Optionally, configure other settings like Remote Admin to manage the browser remotely if needed.
+Set Fully Kiosk Browser as Default Launcher (optional):
+
+This step is optional but ensures that Fully Kiosk Browser is the primary interface:
+Open Settings on your Android TV.
+Go to Device Preferences > Home > Launcher.
+Select Fully Kiosk Browser as the default launcher (if this option is available).
+Reboot Your Android TV:
+
+Restart your Android TV to ensure that Fully Kiosk Browser starts up automatically and loads your web application.
+Steps for Setting Fully Kiosk Browser:
+Open Fully Kiosk Browser:
+
+Enter the URL of your web application.
+Access Settings:
+
+Tap on the three-dot menu or swipe from the left to open the menu.
+Navigate to Settings.
+Web Content Settings:
+
+Hide URL bar: Enable Hide URL Bar.
+Hide navigation bar: Enable Hide Navigation Bar.
+Kiosk Mode Settings:
+
+Autostart on Boot: Enable Autostart Fully on Boot.
+Prevent App Switch: Enable Prevent App Switch.
+Reboot and Test:
+
+Restart your Android TV to check if the Fully Kiosk Browser starts automatically with your web application loaded and without showing the URL.
+
+========================================================================================================================================================================
+
+Role of Apache Tomcat
+Apache Tomcat is a web server and servlet container that allows you to host web applications. Here’s why you use it:
+
+========================
+Hosting the Application:
+========================
+
+Tomcat serves your web application, making it accessible over a network.
+Your application files (HTML, CSS, JavaScript, etc.) are hosted on the server.
+Processing Requests:
+
+Tomcat handles HTTP requests and responses, serving your web application to clients (like a web browser on your Android TV).
+Dynamic Content:
+
+If your application includes servlets or JSP (JavaServer Pages), Tomcat processes these to generate dynamic content.
+Role of Fully Kiosk Browser on Android TV
+Fully Kiosk Browser is an Android app that provides a full-screen, customizable browser experience specifically designed for kiosk and digital signage purposes. Here’s why you use it:
+
+===========================
+Displaying the Application:
+===========================
+
+Fully Kiosk Browser is used to display the web application hosted on Tomcat in a full-screen, immersive mode.
+It hides the URL bar and navigation controls, providing a clean display without distractions.
+Autostart on Boot:
+
+It can be configured to start automatically when the TV boots, ensuring your application is displayed immediately without manual intervention.
+Kiosk Features:
+
+Prevents users from switching apps or navigating away, maintaining the focus on your web application.
+Keeps the screen on and prevents the TV from going to sleep, which is ideal for continuous display.
+How They Work Together
+Development and Hosting:
+
+You develop your web application and deploy it to Apache Tomcat. Tomcat makes your application accessible via a URL (e.g., http://localhost:8080/DOC_DIR/).
+Accessing the Application:
+
+On your Android TV, you use Fully Kiosk Browser to access the URL of your hosted application.
+Fully Kiosk Browser loads the web application from Tomcat and displays it in a user-friendly, full-screen mode.
+Seamless User Experience:
+
+When the Android TV is turned on, Fully Kiosk Browser automatically starts and loads your web application, providing a seamless experience.
+Step-by-Step Usage
+Deploy Web Application to Tomcat:
+
+Place your WAR file in the webapps directory of Tomcat.
+Start Tomcat to deploy your application.
+Configure Fully Kiosk Browser on Android TV:
+
+Install Fully Kiosk Browser from the Google Play Store.
+Enter the URL of your web application hosted on Tomcat (http://localhost:8080/DOC_DIR/).
+Configure kiosk settings to hide the URL bar, keep the screen on, and autostart on boot.
+Startup Configuration:
+
+Ensure Fully Kiosk Browser is set to launch on boot.
+Reboot your Android TV to verify the setup.
+
+
+========================================================================================================================================================================
+
+
+==============
+Kiosk Browser:
+==============
+
+login the routers admin panel  
+port forwarding system         
+remote desktop
+Network Attached Storage
+
+Steps to Configure Port Forwarding
+1. Determine Your Local Server's IP Address
+First, you need to find the local IP address of the computer where Tomcat is running.
+
+Windows: Open Command Prompt and type ipconfig. Look for the IPv4 Address under your active network connection.
+
+==========================================
+2. Log In to Your Router’s Admin Panel
+==========================================
+Access your router’s admin panel through a web browser.
+
+Open a web browser on a device connected to your network.
+Enter the router's IP address in the address bar. Common addresses are 192.168.1.1, 192.168.0.1, or 192.168.1.254.
+Log in with the router's admin username and password. These are usually found on a sticker on the router or in the router's manual.
+
+==========================================
+3. Set Up Port Forwarding
+==========================================
+Find the Port Forwarding Section:
+
+The location of the port forwarding settings varies by router brand. Look for sections like Port Forwarding, Applications & Gaming, NAT/QoS, or Advanced Settings.
+
+==========================================
+Create a New Port Forwarding Rule:
+==========================================
+
+Add a new port forwarding rule with the following details:
+Service Name: Give it a name (e.g., Tomcat).
+Port Range: Enter 8080 for both the start and end ports.
+Local IP: Enter the local IP address of the server running Tomcat (e.g., 192.168.1.100).
+Local Port: Enter 8080.
+Protocol: Choose TCP or Both.
+Save/Apply the settings.
+==========================================
+4. Find Your Public IP Address
+==========================================
+Your public IP address is what devices outside your network will use to access your server.
+
+Open a web browser.
+Go to a website like https://www.whatismyip.com/ or https://www.ipchicken.com/.
+Note down your public IP address.
+
+==========================================
+5. Update the URL on Fully Kiosk Browser
+==========================================
+Install and Open Fully Kiosk Browser on your Android TV.
+
+==========================================
+Enter the URL of Your Web Application:
+==========================================
+
+Use the public IP address and port 8080 in the URL format: http://your-public-ip:8080/DOC_DIR.
+For example, if your public IP is 203.0.113.45, the URL would be http://203.0.113.45:8080/DOC_DIR.
+Access Settings in Fully Kiosk Browser:
+
+Enable options like Hide URL Bar, Hide Navigation Bar, Autostart Fully on Boot, and Prevent App Switch.
+Save and Exit the settings.
+
+====================
+Important Notes :
+====================
+Ensure Your Local Server Is Always On: Your local server (desktop running Tomcat) must be on and connected to the network for your application to be accessible.
+Static Local IP: It’s recommended to assign a static local IP to your server to prevent IP address changes.
+Firewall Settings: Ensure that your local server’s firewall allows incoming connections on port 8080.
