@@ -238,6 +238,36 @@ Save and Exit the settings.
 ====================
 Important Notes :
 ====================
+
+===================================================================================================================================================================
+2024-07-12:  DOCUMENTATION
+
+Apache Software Foundation
+ 
+Tomcat 10.1
+
+webapps  ( if this webapps folder is not in means need to create the folder own)
+
+---- > Put your war file 
+
+---- > automatically it will create a extracted folder
+
+
+WAR FILE GENERATING COMMAND :
+---------------------------
+
+--> Find our installed java folder 
+
+****** cd  C:\Program Files\Java\jdk-22\bin
+jar -cvf C:\Sujithra\DOC_DIR1\DOC_DIR1.war -C C:\Sujithra\DOC_DIR1
+
+-C  --> The -C option changes the current directory to
+
+.: The dot . indicates the current directory (after the change) and tells the jar command to include all files and subdirectories from this location.
+
+
+
+
 Ensure Your Local Server Is Always On: Your local server (desktop running Tomcat) must be on and connected to the network for your application to be accessible.
 Static Local IP: It’s recommended to assign a static local IP to your server to prevent IP address changes.
 Firewall Settings: Ensure that your local server’s firewall allows incoming connections on port 8080.
